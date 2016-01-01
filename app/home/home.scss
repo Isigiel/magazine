@@ -1,0 +1,9 @@
+md-content.landing{
+  background-image: url("../../../images/landing-back.png");
+  md-card{
+    background-color: rgba(255,255,255,0.9);
+    md-icon.hot{
+      color: red;
+    }
+  }
+}

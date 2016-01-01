@@ -1,0 +1,37 @@
+md-sidenav.md-sidenav-left.md-whiteframe-6dp(md-component-id="left", md-is-locked-open="$mdMedia('gt-sm')", flex)
+  md-toolbar.md-whiteframe-3dp
+    h1.title(ng-hide="sidenav.loggedin") Magazine
+    h1.title(ng-show="sidenav.loggedin")
+      img(src="{{sidenav.user.image}}")
+      | {{sidenav.user.name}}
+
+  md-list.nav(flex, ng-if="sidenav.loggedin")
+    md-list-item(ui-sref="quotes", ui-sref-active="active")
+      md-icon dashboard
+      p <strong>Stilblüten</strong>
+    md-list-item(ui-sref="modpacks", ui-sref-active="active")
+      md-icon work
+      p <strong>Modpacks</strong>
+    md-list-item(ui-sref="settings")
+      md-icon settings
+      p <strong>Settings</strong>
+    md-list-item(ng-click="sidenav.logout()")
+      md-icon lock
+      p <strong>Logout</strong>
+
+  md-list.nav(flex, ng-if="!sidenav.loggedin")
+    md-list-item(ng-click="sidenav.facebook()")
+      md-icon lock_open
+      p <strong>Login mit Facebook</strong>
+      md-divider
+    md-list-item(layout="column")
+      md-input-container
+        label Email
+        input(type="email")
+      md-input-container
+        label Passwort
+        input(type="password")
+      br
+      md-button Login mit email
+
+  pre {{sidenav.user | json}}

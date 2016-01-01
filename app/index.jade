@@ -1,0 +1,27 @@
+doctype html
+html(lang='en' data-ng-app='magazine')
+  head
+    title magazine
+    meta(charset="utf8")
+    meta(name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+    | <!-- inject:head:js -->
+    | <!-- endinject -->
+    | <!-- inject:html -->
+    | <!-- endinject -->
+    | <!-- bower:css -->
+    | <!-- endbower -->
+    | <!-- inject:css -->
+    | <!-- endinject -->
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+    style(type="text/css")
+      | [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      | display: none !important;
+      | }
+  body(layout="row", ng-cloak)
+    sidenav(layout="column")
+
+    div.md-whiteframe-6dp(role="main", flex, layout="column", data-ui-view)
+    | <!-- bower:js -->
+    | <!-- endbower -->
+    | <!-- inject:js -->
+    | <!-- endinject -->
