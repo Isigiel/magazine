@@ -4,6 +4,7 @@ html, body {
   height:100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .curly{
   font-size: 1.5em;
@@ -24,4 +25,10 @@ md-toolbar h1 {
 h1.title{
   font-weight: 600;
   font-size: 2rem;
+}
+
+img.profile{
+  border-radius: 100%;
+  margin: 4px;
+  height: 40px;
 }

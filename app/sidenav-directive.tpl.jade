@@ -1,9 +1,10 @@
 md-sidenav.md-sidenav-left.md-whiteframe-6dp(md-component-id="left", md-is-locked-open="$mdMedia('gt-sm')", flex)
-  md-toolbar.md-whiteframe-3dp
+  md-toolbar.md-whiteframe-3dp(layout="row", layout-align="center center")
     h1.title(ng-hide="sidenav.loggedin") Magazine
-    h1.title(ng-show="sidenav.loggedin")
-      img(src="{{sidenav.user.image}}")
-      | {{sidenav.user.name}}
+    div(flex="15", ng-show="sidenav.loggedin")
+      img.profile(src="{{sidenav.user.image}}")
+    dic(flex, ng-show="sidenav.loggedin")
+      h1.title {{sidenav.user.name}}
 
   md-list.nav(flex, ng-if="sidenav.loggedin")
     md-list-item(ui-sref="quotes", ui-sref-active="active")

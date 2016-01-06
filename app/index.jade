@@ -20,7 +20,7 @@ html(lang='en' data-ng-app='magazine')
   body(layout="row", ng-cloak)
     sidenav(layout="column")
 
-    div.md-whiteframe-6dp(role="main", flex, layout="column", data-ui-view)
+    ui-view(flex, layout="row")
     | <!-- bower:js -->
     | <!-- endbower -->
     | <!-- inject:js -->

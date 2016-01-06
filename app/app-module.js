@@ -14,7 +14,8 @@
       'home',
       'firebase',
       'utils',
-      'quotes'
+      'quotes',
+      'rumors'
     ]);
 
   angular.module('magazine').config(function ($mdThemingProvider) {

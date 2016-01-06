@@ -1,48 +1,49 @@
-md-toolbar.md-whiteframe-3dp
-  h1 Abizeitung
-md-content.landing(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
-  div(flex=100)
-    md-card
-      md-card-title
-        md-card-title-text
-          span.md-headline Hallo&nbsp;
-            md-icon mood
-      md-card-content
-        p Auf dieser Seite wollen wir unsere Abizeitung zusammenstellen, noch ein paar Hinweise:
-        ul
-          li Nutzt Fehler, die ihr findet nicht aus
-          li Helft nach besten Kräften mit
-          li Die Seite ist auch gut auf dem Handy, mobil, zu benutzen
-          li Bei Fragen und Problemen könnt ihr euch an die Mitglieder der Redaktion wenden
-          li
-            strong Macht keinen Scheiß
-  div(flex=100, flex-gt-md=33)
-    md-card
-      md-card-title
-        md-card-title-text
-          span.md-headline Bei Problemen mit Darstellung und scrollen
-      md-card-content
-        p Sollten bei euch Probleme in Form von überlagertem Text oder fehlenden Scroll- (Bildlauf-) Leisten haben, ist sowohl auf Handys als auch auf PCs chrome zu empfehlen.
-  div(flex=100, flex-gt-md=33)
-    md-card
-      md-card-title
-        md-card-title-text
-          span.md-headline Zu den Stilblüten&nbsp;
-      md-card-content
-        p Bitte versucht euch an unsere Vorgabe bezüglich des Formats der Stilblüten zu halten, diese ist die erste Stilblüte.
-        | Außerdem bitten wir euch, eine neue Stilblüte zweimal zu lesen, da alle Fehler von der Redaktion bearbeitet werden müssen.
-        | Des weiteren wären wir auch dafür dankbar wenn ihr versucht doppelte Stilblüten zu vermeiden, indem ihr kurz schaut ob eure Geschichte vielleicht schon aufgeschieben wurde.
-        | Sollte euch dennoch eine Dopplung auffallen, könnt ihr diese bei der Redaktion melden.
-  div(flex=100, flex-gt-md=33)
-    md-card
-      md-card-title
-        md-card-title-text
-          span.md-headline
-            md-icon.hot whatshot
-            | &nbsp;Letzte Änderungen
-      md-card-content
-        ul
-          li Artikel können von beliebig vielen Menschen gleichzeitig bearbeitet werden
-          li Benutzer ohne Facebook können auch an der Abizeitung mitarbeiten
-          li Rechtschreibfehler und andere kleine Probleme wurden behoben
-          li Artikel sind von nun an mit ihren Autoren gekennzeichnet
+div(flex, layout="column")
+  md-toolbar.md-whiteframe-3dp(md-scroll-shrink)
+    h1 Abizeitung
+  md-content.landing(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
+    div(flex=100)
+      md-card
+        md-card-title
+          md-card-title-text
+            span.md-headline Hallo&nbsp;
+              md-icon mood
+        md-card-content
+          p Auf dieser Seite wollen wir unsere Abizeitung zusammenstellen, noch ein paar Hinweise:
+          ul
+            li Nutzt Fehler, die ihr findet nicht aus
+            li Helft nach besten Kräften mit
+            li Die Seite ist auch gut auf dem Handy, mobil, zu benutzen
+            li Bei Fragen und Problemen könnt ihr euch an die Mitglieder der Redaktion wenden
+            li
+              strong Macht keinen Scheiß
+    div(flex=100, flex-gt-md=33)
+      md-card
+        md-card-title
+          md-card-title-text
+            span.md-headline Bei Problemen mit Darstellung und scrollen
+        md-card-content
+          p Sollten bei euch Probleme in Form von überlagertem Text oder fehlenden Scroll- (Bildlauf-) Leisten haben, ist sowohl auf Handys als auch auf PCs chrome zu empfehlen.
+    div(flex=100, flex-gt-md=33)
+      md-card
+        md-card-title
+          md-card-title-text
+            span.md-headline Zu den Stilblüten&nbsp;
+        md-card-content
+          p Bitte versucht euch an unsere Vorgabe bezüglich des Formats der Stilblüten zu halten, diese ist die erste Stilblüte.
+          | Außerdem bitten wir euch, eine neue Stilblüte zweimal zu lesen, da alle Fehler von der Redaktion bearbeitet werden müssen.
+          | Des weiteren wären wir auch dafür dankbar wenn ihr versucht doppelte Stilblüten zu vermeiden, indem ihr kurz schaut ob eure Geschichte vielleicht schon aufgeschieben wurde.
+          | Sollte euch dennoch eine Dopplung auffallen, könnt ihr diese bei der Redaktion melden.
+    div(flex=100, flex-gt-md=33)
+      md-card
+        md-card-title
+          md-card-title-text
+            span.md-headline
+              md-icon.hot whatshot
+              | &nbsp;Letzte Änderungen
+        md-card-content
+          ul
+            li Artikel können von beliebig vielen Menschen gleichzeitig bearbeitet werden
+            li Benutzer ohne Facebook können auch an der Abizeitung mitarbeiten
+            li Rechtschreibfehler und andere kleine Probleme wurden behoben
+            li Artikel sind von nun an mit ihren Autoren gekennzeichnet

@@ -28,14 +28,21 @@
       templateUrl: '/sidenav-directive.tpl.html',
       replace: false,
       controllerAs: 'sidenav',
-      controller: function (Principal, Auth) {
+      controller: function (Principal, Auth, $log) {
         var vm = this;
         vm.name = 'sidenav';
         vm.facebook = function () {
-          Auth.$authWithOAuthPopup('facebook', {scope: 'email'}).then(function () {
+          Auth.$authWithOAuthPopup('facebook', {scope: 'email'}).then(function (authData) {
+            $log.debug('Authenticated');
             vm.loggedin = Principal.isAuthenticated();
             Principal.identity().then(function (user) {
+              var provider = authData.provider;
+              $log.debug('Identity');
               vm.user = user;
+              user.image = authData[provider].profileImageURL;
+              user.roles = ['user'];
+              $log.info(authData);
+              user.$save();
             });
           });
         };
