@@ -1,5 +1,8 @@
-md-toolbar.md-whiteframe-3dp(md-scroll-shrink)
-  h1 Stilblüten
+md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
+  div(flex="20")
+    menu-button
+  div(flex, layout="row", layout-align="center")
+    h1 Stilblüten
 md-content.content(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
   div(ng-repeat="quote in quotes.all", flex="100", flex-gt-md="50", flex-gt-lg="33")
     md-card

@@ -1,6 +1,9 @@
 div(flex, layout="column")
-  md-toolbar.md-whiteframe-3dp(md-scroll-shrink)
-    h1 Abizeitung
+  md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
+    div(flex="20")
+      menu-button
+    div(flex, layout="row", layout-align="center")
+      h1 Abizeitung
   md-content.landing(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
     div(flex=100)
       md-card
