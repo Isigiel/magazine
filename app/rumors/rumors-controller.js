@@ -12,8 +12,9 @@
     .module('rumors')
     .controller('RumorsCtrl', RumorsCtrl);
 
-  function RumorsCtrl() {
+  function RumorsCtrl($firebaseArray, Ref, $log) {
     var vm = this;
+    vm.all = $firebaseArray(Ref.child('rumors'));
     vm.ctrlName = 'RumorsCtrl';
   }
 }());

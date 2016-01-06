@@ -1,2 +1,9 @@
-h2 rumors
-p {{rumors.ctrlName}}
+md-toolbar.md-whiteframe-3dp(md-scroll-shrink)
+  h1 Gerüchte
+md-content.content(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
+    md-card(flex)
+      md-card-header
+        md-card-header-text
+          span.md-title Wir halten für ein Gerücht, dass...
+      md-card-content
+        p(ng-repeat="rumor in rumors.all") {{rumor.content}}
