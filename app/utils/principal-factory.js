@@ -56,7 +56,9 @@
           _identity = undefined;
         }
         // check and see if we have retrieved the identity data from the server. if we have, reuse it by immediately resolving
-        if (angular.isDefined(_identity)) {
+        if (angular.isDefined(_identity) && _identity !== null) {
+          $log.info('Identity already defined');
+          $log.info(_identity);
           deferred.resolve(_identity);
 
           return deferred.promise;
@@ -82,10 +84,12 @@
         if (Auth.$getAuth()) {
           _identity = $firebaseObject(Ref.child('users').child(Auth.$getAuth().uid));
           _identity.$loaded().then(function () {
+            $log.info('Identity fetched');
             deferred.resolve(_identity);
           });
         } else {
           _identity = null;
+          $log.warn('Identity not loadable');
           deferred.resolve(_identity);
         }
         return deferred.promise;

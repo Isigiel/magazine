@@ -35,11 +35,13 @@
           Auth.$authWithOAuthPopup('facebook', {scope: 'email'}).then(function (authData) {
             $log.debug('Authenticated');
             vm.loggedin = Principal.isAuthenticated();
-            Principal.identity().then(function (user) {
+            Principal.identity(true).then(function (user) {
               var provider = authData.provider;
               $log.debug('Identity');
+              $log.debug(user);
               vm.user = user;
               user.image = authData[provider].profileImageURL;
+              //user.name = user.name || authData[provider].displayName;
               user.roles = ['user'];
               $log.info(authData);
               user.$save();
