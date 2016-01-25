@@ -1,9 +1,19 @@
 md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
-  div(flex="20")
-    menu-button
-  div(flex, layout="row", layout-align="center")
+  div.md-toolbar-tools
+    menu-button(hide-gt-sm)
     h1 Stilblüten
 md-content.content(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
+  div(flex="100", flex-gt-md="50", flex-gt-lg="33")
+    md-card
+      md-card-header
+        md-card-header-text
+          span.md-title Neue Stilblüte
+      md-card-content.quote
+        md-input-container.md-block
+          label Inahlt
+          textarea(columns="1", rows="5")
+      md-card-actions(layout="row", layout-align="end center")
+        md-button Speichern
   div(ng-repeat="quote in quotes.all", flex="100", flex-gt-md="50", flex-gt-lg="33")
     md-card
       md-card-header

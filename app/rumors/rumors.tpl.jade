@@ -1,7 +1,6 @@
 md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
-  div(flex="20")
-    menu-button
-  div(flex, layout="row", layout-align="center")
+  div.md-toolbar-tools
+    menu-button(hide-gt-sm)
     h1 Gerüchte
 md-content.content(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
     md-card(flex)
@@ -9,4 +8,9 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
         md-card-header-text
           span.md-title Wir halten für ein Gerücht, dass...
       md-card-content
+        div(layout="row")
+          md-input-container(flex)
+            label ... die Schüler wissen wie das geht.
+            input
+          md-button Specihern
         p(ng-repeat="rumor in rumors.all") {{rumor.content}}

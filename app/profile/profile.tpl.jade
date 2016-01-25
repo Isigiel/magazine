@@ -1,0 +1,31 @@
+md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
+  div.md-toolbar-tools
+    menu-button(hide-gt-sm)
+    h1 Profil
+md-content.content(flex, layout-padding, layout="row")
+  div
+    md-card
+      md-card-header
+        md-card-header-text
+          span.md-title Dein Steckbrief
+      md-card-content.quote
+        md-input-container.md-block
+          label Spitzname
+          input(type="text")
+        md-input-container.md-block
+          label Geburtsdatum
+          input(type="text")
+        md-input-container.md-block
+          label Abi-Fächer
+          input(type="text")
+        md-input-container.md-block
+          label Blödestes Fach
+          input(type="text")
+        md-input-container.md-block
+          label Lebensmotto
+          input(type="text")
+        md-input-container.md-block
+          label Nach dem Abi
+          input(type="text")
+      md-card-actions(layout="row", layout-align="end center")
+        md-button Speichern

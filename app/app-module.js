@@ -15,7 +15,8 @@
       'firebase',
       'utils',
       'quotes',
-      'rumors'
+      'rumors',
+      'profile'
     ]);
 
   angular.module('magazine').config(function ($mdThemingProvider) {
