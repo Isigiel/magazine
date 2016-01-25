@@ -8,12 +8,18 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
       md-card-header
         md-card-header-text
           span.md-title Neue Stilblüte
-      md-card-content.quote
-        md-input-container.md-block
-          label Inahlt
-          textarea(columns="1", rows="5")
-      md-card-actions(layout="row", layout-align="end center")
-        md-button Speichern
+      form(name="newQuote")
+        md-card-content.quote
+          md-input-container.md-block
+            label Inahlt
+            textarea(required="required", ng-model="quotes.new", ng-minlength="20", md-maxlength="750", columns="1", rows="5", name="content")
+            pre {{newQuote.content.$error}}
+            div(ng-messages="newQuote.content.$error")
+              div(ng-message="required") Bitte gib eine Stilblüte ein.
+              div(ng-message="minlength") Die Stilblüte sollte mindestens 20 Zeichen lang sein.
+              div(ng-message="md-maxlength") Die Stilblüte darf nicht mehr als 750 Zeichen lang sein.
+        md-card-actions(layout="row", layout-align="end center")
+          md-button(type="submit", ng-click="quotes.saveNew(newQuote)") Speichern
   div(ng-repeat="quote in quotes.all", flex="100", flex-gt-md="50", flex-gt-lg="33")
     md-card
       md-card-header

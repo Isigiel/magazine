@@ -34,6 +34,9 @@
         });
       }
     });
-    vm.ctrlName = 'QuotesCtrl';
+    vm.saveNew = function (form) {
+      $log.info('Save new called');
+      $log.info(form);
+    };
   }
 }());

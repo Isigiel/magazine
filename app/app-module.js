@@ -8,7 +8,6 @@
    */
   angular
     .module('magazine', [
-      'ngAria',
       'ngMaterial',
       'ui.router',
       'home',
