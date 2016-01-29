@@ -11,21 +11,21 @@ md-content.content(flex, layout-padding, layout="row")
       md-card-content.quote
         md-input-container.md-block
           label Spitzname
-          input(type="text")
+          input(type="text", ng-model="profile.user.title")
         md-input-container.md-block
           label Geburtsdatum
-          input(type="text")
+          input(type="text", ng-model="profile.user.birth")
         md-input-container.md-block
           label Abi-Fächer
-          input(type="text")
+          input(type="text", ng-model="profile.user.subjects")
         md-input-container.md-block
           label Blödestes Fach
-          input(type="text")
+          input(type="text", ng-model="profile.user.worst")
         md-input-container.md-block
           label Lebensmotto
-          input(type="text")
+          input(type="text", ng-model="profile.user.motto")
         md-input-container.md-block
           label Nach dem Abi
-          input(type="text")
+          input(type="text", ng-model="profile.user.after")
       md-card-actions(layout="row", layout-align="end center")
-        md-button Speichern
+        md-button(ng-click="profile.save()") Speichern

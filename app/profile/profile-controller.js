@@ -12,8 +12,11 @@
     .module('profile')
     .controller('ProfileCtrl', ProfileCtrl);
 
-  function ProfileCtrl() {
+  function ProfileCtrl($firebaseObject, Ref, Auth) {
     var vm = this;
-    vm.ctrlName = 'ProfileCtrl';
+    vm.user = $firebaseObject(Ref.child('users').child(Auth.$getAuth().uid));
+    vm.save = function () {
+      vm.user.$save();
+    };
   }
 }());
