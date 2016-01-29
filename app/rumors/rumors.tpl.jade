@@ -9,8 +9,26 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
           span.md-title Wir halten für ein Gerücht, dass...
       md-card-content
         div(layout="row")
-          md-input-container(flex)
-            label ... die Schüler wissen wie das geht.
-            input
-          md-button Specihern
-        p(ng-repeat="rumor in rumors.all") {{rumor.content}}
+          form(name="rumor", flex, layout="row")
+            md-input-container(flex)
+              label ... die Schüler wissen wie das geht.
+              input(ng-model="rumors.new", required, ng-minlength="20", md-maxlength="200", name="content")
+              div(ng-messages="rumor.content.$error" md-auto-hide="false")
+                div(ng-message="required") Bitte gib ein Gerücht ein.
+                div(ng-message="minlength") Das Gerücht sollte mindestens 20 Zeichen lang sein.
+                div(ng-message="md-maxlength") Das Gerücht darf nicht mehr als 200 Zeichen lang sein.
+            md-button(type="submit", ng-click="rumors.saveNew(rumor)", ng-disabled="rumor.$invalid") Specihern
+        md-list
+          md-list-item(ng-repeat="rumor in rumors.all")
+            div(layout="row", flex)
+              p(ng-if="!rumor.edit") {{rumor.content}}
+              md-input-container.md-block(ng-if="rumor.edit", flex="80")
+                label Gerücht
+                input(type="text", ng-model="rumor.newContent")
+              md-button(ng-click="rumors.save(rumor)", ng-show="rumor.edit") Speichern
+            md-button.md-icon-button(ng-click="rumors.edit(rumor)", ng-hide="rumor.edit", ng-if="rumors.user.role > 20 || rumor.author == rumors.user.$id")
+              md-icon edit
+            md-button.md-icon-button.md-secondary(ng-click="rumors.delete(rumor)", ng-hide="rumor.edit", ng-if="rumors.user.role > 20 || rumor.author == rumors.user.$id", style="margin-right: 20px;")
+              md-icon delete
+            md-button.md-secondary(ng-click="rumors.cancel(rumor)", ng-show="rumor.edit") Abbrechen
+            md-divider(ng-if="!$last")
