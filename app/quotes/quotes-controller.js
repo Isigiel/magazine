@@ -12,31 +12,50 @@
     .module('quotes')
     .controller('QuotesCtrl', QuotesCtrl);
 
-  function QuotesCtrl(Ref, $firebaseObject, $firebaseArray, $log) {
-    var vm = this, users, userLoad, quoteLoad;
-    vm.all = $firebaseArray(Ref.child('quotes'));
-    users = $firebaseObject(Ref.child('users'));
-    vm.all.$loaded().then(function () {
-      quoteLoad = true;
-      if (userLoad) {
-        $log.info('users loaded first, adding authors');
-        vm.all.forEach(function (quote) {
-          quote.author = users[quote.author];
-        });
-      }
-    });
+  function QuotesCtrl(Ref, $firebaseObject, $firebaseArray, $log, $mdToast, user) {
+    var vm = this, users;
+    vm.user = user;
+    users = $firebaseArray(Ref.child('users'));
+    vm.author = function (quote) {
+      return users.$getRecord(quote.author);
+    };
+    vm.edit = function (quote) {
+      $log.debug("EDIT");
+      quote.newContent = quote.content;
+      quote.edit = true;
+    };
+    vm.cancel = function (quote) {
+      quote.edit = false;
+    };
+    vm.save = function (quote) {
+      quote.content = quote.newContent;
+      delete quote.newContent;
+      delete quote.edit;
+      vm.all.$save(quote).then(function () {
+        $mdToast.showSimple('Änderungen gespeichert');
+      });
+    };
     users.$loaded().then(function () {
-      userLoad = true;
-      if (quoteLoad) {
-        $log.info('quotes loaded first, adding authors');
-        vm.all.forEach(function (quote) {
-          quote.author = users[quote.author];
-        });
-      }
+      vm.all = $firebaseArray(Ref.child('quotes'));
     });
+    vm.delete = function (quote) {
+      vm.all.$remove(quote).then(function () {
+        $mdToast.showSimple('Stilblüte gelöscht');
+      });
+    };
     vm.saveNew = function (form) {
-      $log.info('Save new called');
-      $log.info(form);
+      if (form.$valid) {
+        vm.all.$add({
+          content: vm.new,
+          author: user.$id
+        }).then(function () {
+          $mdToast.showSimple('Stilblüte gespeichert!');
+        });
+        vm.new = '';
+        form.$setUntouched();
+      } else {
+        $mdToast.showSimple('Formular ungültig!');
+      }
     };
   }
 }());

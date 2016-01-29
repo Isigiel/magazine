@@ -12,24 +12,30 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
         md-card-content.quote
           md-input-container.md-block
             label Inahlt
-            textarea(required="required", ng-model="quotes.new", ng-minlength="20", md-maxlength="750", columns="1", rows="5", name="content")
-            pre {{newQuote.content.$error}}
-            div(ng-messages="newQuote.content.$error")
+            textarea(required="", ng-model="quotes.new", ng-minlength="20", md-maxlength="750", rows="5", name="content")
+            div(ng-messages="newQuote.content.$error" md-auto-hide="false")
               div(ng-message="required") Bitte gib eine Stilblüte ein.
               div(ng-message="minlength") Die Stilblüte sollte mindestens 20 Zeichen lang sein.
               div(ng-message="md-maxlength") Die Stilblüte darf nicht mehr als 750 Zeichen lang sein.
         md-card-actions(layout="row", layout-align="end center")
-          md-button(type="submit", ng-click="quotes.saveNew(newQuote)") Speichern
+          md-button(type="submit", ng-click="quotes.saveNew(newQuote)", ng-disabled="newQuote.$invalid") Speichern
   div(ng-repeat="quote in quotes.all", flex="100", flex-gt-md="50", flex-gt-lg="33")
     md-card
       md-card-header
         md-card-avatar
-          img.md-user-avatar(src="{{quote.author.image}}")
+          img.md-user-avatar(src="{{::quotes.author(quote).image}}")
         md-card-header-text
-          span.md-title {{quote.author.name}}
-          span.md-subhead {{quote.author.title}}
+          span.md-title {{::quotes.author(quote).name}}
+          span.md-subhead {{::quotes.author(quote).title}}
       md-card-content.quote
-        p {{quote.content}}
+        p(ng-if="!quote.edit") {{quote.content}}
+        md-input-container.md-block(ng-if="quote.edit")
+          label Inahlt
+          textarea(ng-model="quote.newContent", rows="5")
       md-card-actions(layout="row", layout-align="end center")
-        md-button.md-icon-button
+        md-button.md-icon-button(ng-if='quotes.user.role > 20 || quote.author == quotes.user.$id', ng-hide="quote.edit", ng-click="quotes.delete(quote)")
           md-icon delete
+        md-button.md-icon-button(ng-click="quotes.edit(quote)", ng-if='quotes.user.role > 20 || quote.author == quotes.user.$id', ng-hide="quote.edit")
+          md-icon edit
+        md-button(ng-show="quote.edit", ng-click="quotes.save(quote)") Speichern
+        md-button(ng-show="quote.edit", ng-click="quotes.cancel(quote)") Abbrechen
