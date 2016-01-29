@@ -13,10 +13,7 @@ md-sidenav.md-sidenav-left.md-whiteframe-6dp(md-component-id="left", md-is-locke
     md-list-item(ui-sref="rumors", ui-sref-active="active")
       md-icon list
       p <strong>Gerüchte</strong>
-    md-list-item(ui-sref="settings")
-      md-icon settings
-      p <strong>Settings</strong>
-    md-list-item(ui-sref="profile")
+    md-list-item(ui-sref="profile", ui-sref-active="active")
       md-icon face
       p <strong>Profil</strong>
     md-list-item(ng-click="sidenav.logout()")
@@ -37,5 +34,3 @@ md-sidenav.md-sidenav-left.md-whiteframe-6dp(md-component-id="left", md-is-locke
         input(type="password")
       br
       md-button Login mit email
-
-  pre {{sidenav.user | json}}
