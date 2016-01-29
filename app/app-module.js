@@ -9,10 +9,13 @@
   angular
     .module('magazine', [
       'ngMaterial',
+      'ngMessages',
       'ui.router',
       'home',
       'firebase',
-      'utils',
+      'firebase.ref',
+      'firebase.auth',
+      'firebase.config',
       'quotes',
       'rumors',
       'profile'

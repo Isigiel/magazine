@@ -1,15 +1,7 @@
 (function () {
   'use strict';
-
-  /**
-   * @ngdoc service
-   * @name utils.factory:Auth
-   *
-   * @description
-   *
-   */
   angular
-    .module('utils')
+    .module('firebase.auth', ['firebase', 'firebase.ref'])
     .factory('Auth', Auth);
 
   function Auth($firebaseAuth, Ref) {
