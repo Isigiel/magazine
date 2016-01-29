@@ -21,9 +21,12 @@
       'profile'
     ]);
 
-  angular.module('magazine').config(function ($mdThemingProvider) {
-    $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .accentPalette('pink');
-  });
+  angular
+    .module('magazine')
+    .config(function ($mdThemingProvider, $locationProvider) {
+      $locationProvider.html5Mode(true);
+      $mdThemingProvider.theme('default')
+        .primaryPalette('blue')
+        .accentPalette('pink');
+    });
 }());

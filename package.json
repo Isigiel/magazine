@@ -7,6 +7,7 @@
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.2.3",
+    "connect-modrewrite": "^0.8.5",
     "del": "^2.0.0",
     "eslint-config-angular": "^0.2.0",
     "eslint-config-dustinspecker": "^0.1.0",
