@@ -39,14 +39,14 @@
           vm.user = undefined;
         }
         vm.facebook = function () {
-          Auth.$authWithOAuthPopup('facebook', {scope: 'email'}).then(function (authData) {
-            user = $firebaseObject(Ref.child('users/' + authData.uid));
+          Auth.$authWithOAuthPopup('facebook', {scope: 'email'}).then(function (data) {
+            user = $firebaseObject(Ref.child('users/' + data.uid));
             $log.debug('Authenticated');
             user.$loaded().then(function () {
-              var provider = authData.provider;
+              var provider = data.provider;
               vm.loggedin = true;
               vm.user = user;
-              user.image = authData[provider].profileImageURL;
+              user.image = data[provider].profileImageURL;
               user.$save();
             });
           });

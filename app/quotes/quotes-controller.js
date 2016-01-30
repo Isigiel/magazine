@@ -12,7 +12,7 @@
     .module('quotes')
     .controller('QuotesCtrl', QuotesCtrl);
 
-  function QuotesCtrl(Ref, $firebaseObject, $firebaseArray, $log, $mdToast, user) {
+  function QuotesCtrl(Ref, $firebaseArray, $log, $mdToast, user) {
     var vm = this, users;
     vm.user = user;
     users = $firebaseArray(Ref.child('users'));
@@ -20,7 +20,7 @@
       return users.$getRecord(quote.author);
     };
     vm.edit = function (quote) {
-      $log.debug("EDIT");
+      $log.debug('EDIT');
       quote.newContent = quote.content;
       quote.edit = true;
     };

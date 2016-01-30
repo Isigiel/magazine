@@ -12,7 +12,7 @@
     .module('rumors')
     .controller('RumorsCtrl', RumorsCtrl);
 
-  function RumorsCtrl($firebaseArray, Ref, $log, $mdToast, user) {
+  function RumorsCtrl($firebaseArray, Ref, $mdToast, user) {
     var vm = this;
     vm.all = $firebaseArray(Ref.child('rumors'));
     vm.ctrlName = 'RumorsCtrl';
@@ -50,6 +50,6 @@
       } else {
         $mdToast.showSimple('Formular ungültig!');
       }
-    }
+    };
   }
 }());

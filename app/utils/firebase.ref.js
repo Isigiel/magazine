@@ -8,5 +8,4 @@
   function Ref($window, FBURL) {
     return new $window.Firebase(FBURL);
   }
-
 }());

@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   // for ui-router
-  angular.module('magazine').run(function ($rootScope, $state, Auth){
+  angular.module('magazine').run(function ($rootScope, $state, Auth) {
     Auth.$onAuth(function (authData) {
       if (!authData) {
         $state.go('home');

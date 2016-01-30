@@ -9,7 +9,7 @@
     $stateProvider
       .state('rumors', {
         url: '/rumors',
-        parent:'site',
+        parent: 'site',
         templateUrl: 'rumors/rumors.tpl.html',
         controller: 'RumorsCtrl',
         controllerAs: 'rumors'
