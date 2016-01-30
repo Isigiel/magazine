@@ -1,6 +1,6 @@
 {
   "name": "magazine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "install": "bower install",
     "patch": "npm run-script upload && npm version patch",
