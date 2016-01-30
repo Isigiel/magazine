@@ -1,2 +1,43 @@
-h2 comments
-p {{comments.ctrlName}}
+md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
+  div.md-toolbar-tools
+    menu-button(hide-gt-sm)
+    h1 Kommentare
+md-content.content(flex, layout-padding, layout="column")
+  div
+    md-card(flex)
+      md-card-header
+        md-card-header-text
+          span.md-title Füge einen neuen Kommetar hinzu
+      form(name="newComment")
+        md-card-content
+          md-autocomplete(
+          md-selected-item="comments.selectedUser"
+          md-search-text="comments.user"
+          md-items="item in comments.querySearch(comments.user)"
+          md-item-text="item.name"
+          md-min-length="0"
+          placeholder="Für wen ist der Kommentar?")
+            md-item-template
+              span( md-highlight-text="comments.user", md-highlight-flags="^i") {{item.name}}
+            md-not-found Kein Benutzer gefunden: "{{comments.user}}".
+          md-input-container.md-block(ng-show="comments.selectedUser")
+            label Kommentar
+            textarea(ng-model="comments.new", rows="5", md-maxlength="500", required, name="content")
+            div(ng-messages="newComment.content.$error" md-auto-hide="false")
+              div(ng-message="required") Bitte gib einen Kommentar ein.
+              div(ng-message="md-maxlength") Der Kommentar darf nicht mehr als 500 Zeichen lang sein.
+        md-card-actions(layout="row", layout-align="end center")
+          md-button(type="submit", ng-click="comments.saveNew(newComment)", ng-disabled="newComment.$invalid") Speichern
+  div(flex, layout="row", layout-wrap)
+    div(ng-repeat="comment in comments.own", flex="33")
+      md-card
+        md-card-header
+          md-card-avatar
+            img.md-user-avatar(src="{{comments.nameRepo[comment.person].image}}")
+          md-card-header-text
+            span.md-title {{comments.nameRepo[comment.person].name}}
+        md-card-content
+          p {{::comment.content}}
+        md-card-actions(layout="row", layout-align="end center")
+          md-button.md-icon-button(ng-if="comments.userData.role > 20 || comment.author == comments.userData.$id", ng-click="comments.delete(comment)")
+            md-icon delete
