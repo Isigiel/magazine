@@ -18,7 +18,8 @@
       'firebase.config',
       'quotes',
       'rumors',
-      'profile'
+      'profile',
+      'comments'
     ]);
 
   angular
