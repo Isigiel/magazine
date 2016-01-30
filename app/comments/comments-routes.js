@@ -8,6 +8,7 @@
   function config($stateProvider) {
     $stateProvider
       .state('comments', {
+        parent: 'site',
         url: '/comments',
         templateUrl: 'comments/comments.tpl.html',
         controller: 'CommentsCtrl',
