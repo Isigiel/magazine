@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "install": "bower install",
-    "upload": "gulp build --stage prod && firebase deploy && npm version patch",
+    "patch": "npm upload && npm version patch",
+    "minor": "npm upload && npm version minor",
+    "upload": "gulp build --stage prod && firebase deploy",
     "test": "gulp test"
   },
   "dependencies": {},
@@ -69,5 +71,23 @@
     "underscore.string": "^3.0.1",
     "wiredep": "^2.2.0",
     "yargs": "^3.4.5"
-  }
+  },
+  "description": "*Generated with [ng-poly](https://github.com/dustinspecker/generator-ng-poly/tree/v0.11.3) version 0.11.3*",
+  "main": "build/app/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isigiel/magazine.git"
+  },
+  "keywords": [
+    "magazine",
+    "managing",
+    "angular",
+    "firebase"
+  ],
+  "author": "Isigiel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Isigiel/magazine/issues"
+  },
+  "homepage": "https://github.com/Isigiel/magazine#readme"
 }
