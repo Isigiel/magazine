@@ -21,7 +21,7 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
           md-button(type="submit", ng-click="quotes.saveNew(newQuote)", ng-disabled="newQuote.$invalid") Speichern
   div(ng-repeat="quote in quotes.all", flex="100", flex-gt-md="50", flex-gt-lg="33")
     md-card
-      md-card-header
+      md-card-header(ng-if="quotes.user.role > 20")
         md-card-avatar
           img.md-user-avatar(src="{{::quotes.author(quote).image}}")
         md-card-header-text
