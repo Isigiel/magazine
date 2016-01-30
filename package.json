@@ -2,6 +2,8 @@
   "name": "magazine",
   "version": "0.0.0",
   "scripts": {
+    "install": "bower install",
+    "upload": "gulp build --stage prod && firebase deploy && npm version patch",
     "test": "gulp test"
   },
   "dependencies": {},
