@@ -25,7 +25,7 @@
     return {
       restrict: 'EA',
       scope: {},
-      templateUrl: '/sidenav-directive.tpl.html',
+      templateUrl: 'sidenav-directive.tpl.html',
       replace: false,
       controllerAs: 'sidenav',
       controller: function (Auth, $log, $firebaseObject, Ref) {

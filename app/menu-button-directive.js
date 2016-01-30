@@ -25,7 +25,7 @@
     return {
       restrict: 'EA',
       scope: {},
-      templateUrl: '/menu-button-directive.tpl.html',
+      templateUrl: 'menu-button-directive.tpl.html',
       replace: false,
       controllerAs: 'menuButton',
       controller: function ($mdSidenav) {
