@@ -19,8 +19,8 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
               div(ng-message="md-maxlength") Die Stilblüte darf nicht mehr als 750 Zeichen lang sein.
         md-card-actions(layout="row", layout-align="end center")
           md-button(type="submit", ng-click="quotes.saveNew(newQuote)", ng-disabled="newQuote.$invalid") Speichern
-  div(ng-repeat="quote in quotes.all", flex="100", flex-gt-md="50", flex-gt-lg="33")
-    md-card
+  div(ng-repeat="quote in quotes.all | orderBy:'loaded'", flex="100", flex-gt-md="50", flex-gt-lg="33")
+    md-card(ng-class="{ loaded: quote.loaded}")
       md-card-header(ng-if="quotes.user.role > 20")
         md-card-avatar
           img.md-user-avatar(src="{{::quotes.author(quote).image}}")
@@ -37,5 +37,7 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
           md-icon delete
         md-button.md-icon-button(ng-click="quotes.edit(quote)", ng-if='quotes.user.role > 20 || quote.author == quotes.user.$id', ng-hide="quote.edit")
           md-icon edit
+        md-button.md-icon-button(ng-click="quotes.toggle(quote)", ng-if='quotes.user.role > 20', ng-hide="quote.edit")
+          md-icon cloud_download
         md-button(ng-show="quote.edit", ng-click="quotes.save(quote)") Speichern
         md-button(ng-show="quote.edit", ng-click="quotes.cancel(quote)") Abbrechen

@@ -35,6 +35,15 @@
         $mdToast.showSimple('Änderungen gespeichert');
       });
     };
+    vm.toggle = function (quote) {
+      if(quote.loaded)
+        quote.loaded = !quote.loaded;
+      else
+        quote.loaded = true;
+      vm.all.$save(quote).then(function () {
+        $mdToast.showSimple('Änderungen gespeichert');
+      });
+    };
     users.$loaded().then(function () {
       vm.all = $firebaseArray(Ref.child('quotes'));
     });
