@@ -19,7 +19,7 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
                 div(ng-message="md-maxlength") Das Gerücht darf nicht mehr als 200 Zeichen lang sein.
             md-button(type="submit", ng-click="rumors.saveNew(rumor)", ng-disabled="rumor.$invalid") Specihern
         md-list
-          md-list-item(ng-repeat="rumor in rumors.all")
+          md-list-item(ng-repeat="rumor in rumors.all| orderBy:'loaded'", ng-class="{ loaded: rumor.loaded}")
             div(layout="row", flex)
               p(ng-if="!rumor.edit") {{rumor.content}}
               md-input-container.md-block(ng-if="rumor.edit", flex="80")
@@ -30,5 +30,7 @@ md-content.content(flex, layout-padding, layout="row", layout-align="space-aroun
               md-icon edit
             md-button.md-icon-button.md-secondary(ng-click="rumors.delete(rumor)", ng-hide="rumor.edit", ng-if="rumors.user.role > 20 || rumor.author == rumors.user.$id", style="margin-right: 20px;")
               md-icon delete
+            md-button.md-icon-button(ng-click="rumors.toggle(rumor)", ng-if='rumors.user.role > 20', ng-hide="rumor.edit")
+              md-icon cloud_download
             md-button.md-secondary(ng-click="rumors.cancel(rumor)", ng-show="rumor.edit") Abbrechen
             md-divider(ng-if="!$last")

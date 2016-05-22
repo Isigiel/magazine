@@ -34,6 +34,15 @@
       rumor.newContent = rumor.content;
       rumor.edit = true;
     };
+    vm.toggle = function (rumor) {
+      if(rumor.loaded)
+        rumor.loaded = !rumor.loaded;
+      else
+        rumor.loaded = true;
+      vm.all.$save(rumor).then(function () {
+        $mdToast.showSimple('Änderungen gespeichert');
+      });
+    };
     vm.cancel = function (rumor) {
       rumor.edit = false;
     };
