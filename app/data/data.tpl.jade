@@ -1,0 +1,26 @@
+md-toolbar.md-whiteframe-3dp(md-scroll-shrink, layout="row", layout-align="center center")
+  div.md-toolbar-tools
+    menu-button(hide-gt-sm)
+    h1 Daten
+md-content.content(flex, layout-padding, layout="row", layout-align="space-around start", layout-wrap)
+  div(ng-repeat="user in data.users", flex="100", flex-gt-md="50", flex-gt-lg="33")
+    md-card
+      md-card-header
+        md-card-avatar
+          img.md-user-avatar(src="{{::user.image}}")
+        md-card-header-text
+          span.md-title {{::user.name}}
+          span.md-subhead {{::user.title}}
+      md-card-content.quote
+        div
+          p Scheichname: {{user.title}}
+          p Geburtsdatum: {{user.birth}}
+          p Herrschaftsgebiete: {{user.subjects}}
+          p Dürreperiode: {{user.worst}}
+          p Scheichmotto: {{user.motto}}
+          p Nächste Oase: {{user.after}}
+        div(ng-repeat="comment in user.comments")
+          md-divider
+          p {{comment.content}}
+          p <em>{{::data.author(comment).name}}</em>
+

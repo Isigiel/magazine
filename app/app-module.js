@@ -19,7 +19,8 @@
       'quotes',
       'rumors',
       'profile',
-      'comments'
+      'comments',
+      'data'
     ]);
 
   angular

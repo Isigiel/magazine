@@ -19,6 +19,9 @@ md-sidenav.md-sidenav-left.md-whiteframe-6dp(md-component-id="left", md-is-locke
     md-list-item(ui-sref="profile", ui-sref-active="active")
       md-icon face
       p <strong>Profil</strong>
+    md-list-item(ui-sref="data", ui-sref-active="active", ng-if="sidenav.user.role > 20")
+      md-icon data_usage
+      p <strong>Daten</strong>
     md-list-item(ng-click="sidenav.logout()")
       md-icon lock
       p <strong>Logout</strong>
