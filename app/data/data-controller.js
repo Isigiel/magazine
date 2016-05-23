@@ -19,6 +19,9 @@
     vm.author = function (comment) {
       return vm.users.$getRecord(comment.author);
     };
+    vm.toggle = function(user){
+      user.showComments = !user.showComments
+    };
     vm.users.$loaded().then(function () {
       vm.users.forEach(function (user) {
         user.comments = $firebaseArray(Ref.child('comments').orderByChild('person').equalTo(user.$id));
